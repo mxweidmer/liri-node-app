@@ -3,6 +3,7 @@ require("dotenv").config();
 var axios = require("axios");
 var moment = require("moment");
 var Spotify = require("node-spotify-api");
+var fs = require("fs");
 var keys = require("./keys.js");
 
 var spotify = new Spotify(keys.spotify);
@@ -24,6 +25,7 @@ switch (command) {
         movie(search);
         break;
     case "do-what-it-says":
+        doWhat();
         break;
     default:
         break;
@@ -114,4 +116,11 @@ function movie(movie_name) {
             console.log(error);
         })
 
+}
+
+function doWhat() {
+    fs.readFile('random.txt', (err, data) => {
+        if (err) throw err;
+        console.log(data);
+    });
 }
