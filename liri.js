@@ -18,6 +18,7 @@ switch (command) {
         concert(search);
         break;
     case "spotify-this-song":
+        song(search);
         break;
     case "movie-this":
         break;
@@ -49,4 +50,38 @@ function concert(artist) {
         .catch(function (error) {
             console.log(error);
         })
+}
+
+function song(song_name) {
+
+    var songSearch = "";
+
+    if (!song_name) {
+        songSearch = "The Sign";
+    }
+
+    songSearch = song_name;
+
+    spotify.search({ type: 'track', query: songSearch, limit: 1 }, function (err, data) {
+        if (err) {
+            return console.log('Error occurred: ' + err);
+        }
+
+        var songData = data.tracks.items[0];
+
+        var artistArr = [];
+        for (var i = 0; i < songData.artists.length; i++) {
+            artistArr.push(songData.artists[i].name);
+        }
+        var artists = artistArr.slice().join(", ");
+
+        console.log(divider);
+        console.log("Artist(s): " + artists);
+        console.log("Song name: " + songData.name);
+        console.log("Preview link: " + songData.preview_url);
+        console.log("Album: " + songData.album.name);
+        console.log(divider);
+
+    });
+
 }
