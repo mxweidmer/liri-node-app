@@ -63,7 +63,6 @@ function song(song_name) {
         songSearch = "The Sign";
     }
 
-
     spotify.search({ type: 'track', query: songSearch, limit: 1 }, function (err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
@@ -83,9 +82,7 @@ function song(song_name) {
         console.log("Preview link: " + songData.preview_url);
         console.log("Album: " + songData.album.name);
         console.log(divider);
-
     });
-
 }
 
 function movie(movie_name) {
@@ -112,11 +109,9 @@ function movie(movie_name) {
             console.log("Plot: " + movieData.Plot);
             console.log("Actors: " + movieData.Actors);
             console.log(divider);
-
         }).catch(function (error) {
             console.log(error);
         })
-
 }
 
 function doWhat() {
