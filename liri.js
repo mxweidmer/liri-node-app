@@ -28,6 +28,7 @@ switch (command) {
         doWhat();
         break;
     default:
+        console.log("Command not recognized.")
         break;
 
 }
@@ -119,8 +120,18 @@ function movie(movie_name) {
 }
 
 function doWhat() {
-    fs.readFile('random.txt', (err, data) => {
+    fs.readFile('random.txt', 'utf8', (err, data) => {
         if (err) throw err;
-        console.log(data);
+
+        var fileCont = data.split(",");
+        search = fileCont[1];
+
+        if (fileCont[0] === "concert-this") {
+            concert(search);
+        } else if (fileCont[0] === "spotify-this-song") {
+            song(search);
+        } else if (fileCont[0] === "movie-this") {
+            movie(search);
+        }
     });
 }
