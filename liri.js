@@ -21,6 +21,7 @@ switch (command) {
         song(search);
         break;
     case "movie-this":
+        movie(search);
         break;
     case "do-what-it-says":
         break;
@@ -53,14 +54,12 @@ function concert(artist) {
 }
 
 function song(song_name) {
-
     var songSearch = "";
-
+    songSearch = song_name;
     if (!song_name) {
         songSearch = "The Sign";
     }
 
-    songSearch = song_name;
 
     spotify.search({ type: 'track', query: songSearch, limit: 1 }, function (err, data) {
         if (err) {
@@ -83,5 +82,36 @@ function song(song_name) {
         console.log(divider);
 
     });
+
+}
+
+function movie(movie_name) {
+    var movieSearch = "";
+    movieSearch = movie_name;
+    if (!movie_name) {
+        movieSearch = "Mr. Nobody";
+    }
+
+    var URL = "http://www.omdbapi.com/?t=" + movieSearch + "&y=&plot=short&apikey=trilogy";
+
+    axios.get(URL)
+        .then(function (response) {
+
+            var movieData = response.data;
+
+            console.log(divider);
+            console.log("Title: " + movieData.Title);
+            console.log("Release Year: " + movieData.Year);
+            console.log("IMDB Rating: " + movieData.imdbRating);
+            console.log("Rotten Tomatoes Rating: " + movieData.Ratings[2].Value);
+            console.log("Country(ies): " + movieData.Country);
+            console.log("Language: " + movieData.Language);
+            console.log("Plot: " + movieData.Plot);
+            console.log("Actors: " + movieData.Actors);
+            console.log(divider);
+
+        }).catch(function (error) {
+            console.log(error);
+        })
 
 }
