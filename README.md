@@ -1,7 +1,7 @@
 # liri-node-app
 
 ## Description
-### This is a basic terminal application with four different commands. concert-this takes in a band or artist and returns details for 5 upcoming concerts gathered from the BandsInTown API. spotify-this-song takes in a song and returns some details about the song, as well as a preview url, gathered from the spotify api. If no song is entered, it defaults to "Sign of the Times" by Harry Styles. movie-this takes in a movie and returns details about the movie gathered from the OMDB API. If no movie is entered it defaults to Mr. Nobody.
+### This is a basic terminal application with four different commands. concert-this takes in a band or artist and returns details for 5 upcoming concerts gathered from the BandsInTown API. spotify-this-song takes in a song and returns some details about the song, as well as a preview url, gathered from the spotify api. If no song is entered, it defaults to "The Sign" by Ace of Base. movie-this takes in a movie and returns details about the movie gathered from the OMDB API. If no movie is entered it defaults to Mr. Nobody.  do-what-it-says reads a command and search term from a text file (random.txt) and executes the command.
 
 ## GIF Demos
 

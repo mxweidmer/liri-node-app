@@ -60,7 +60,7 @@ function song(song_name) {
     var songSearch = "";
     songSearch = song_name;
     if (!song_name) {
-        songSearch = "The Sign";
+        songSearch = "The Sign Ace of Base";
     }
 
     spotify.search({ type: 'track', query: songSearch, limit: 1 }, function (err, data) {
